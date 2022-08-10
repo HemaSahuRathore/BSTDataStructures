@@ -13,6 +13,7 @@ namespace D15BinaryTree
         public BinaryTree<T> rightTree;
 
         int leftCount = 0, rightCount = 0;
+        bool result = false;
 
         public BinaryTree(T nodeValue) //constructor
         {
@@ -75,6 +76,30 @@ namespace D15BinaryTree
         public void GetSize()
         {
             Console.WriteLine("\nSize : " + (this.leftCount + this.rightCount + 1));
+        }
+
+        //recursively search
+        public bool IfExists(T element, BinaryTree<T> binaryTree)
+        {
+            if(binaryTree == null)
+            {
+                return false;
+            }
+            if (binaryTree.nodeValue.Equals(element))
+            {
+                Console.WriteLine("Element {0} found!", binaryTree.nodeValue);
+                result = true;
+            }
+            if (element.CompareTo(binaryTree.nodeValue) < 0)
+            {
+                IfExists(element, binaryTree.leftTree);
+            }
+            if(element.CompareTo(binaryTree.nodeValue) > 0)
+            {
+                IfExists(element, binaryTree.rightTree);
+            }
+            
+            return result;
         }
     }
 }

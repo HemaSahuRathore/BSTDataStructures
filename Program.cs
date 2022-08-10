@@ -21,6 +21,8 @@
             binaryTree.Insert(67);
             binaryTree.Display();
             binaryTree.GetSize();
+            bool result = binaryTree.IfExists(63, binaryTree);
+            Console.WriteLine("Element Found : " + result);
         }
     }
 }
