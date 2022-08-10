@@ -12,6 +12,8 @@ namespace D15BinaryTree
         public BinaryTree<T> leftTree;
         public BinaryTree<T> rightTree;
 
+        int leftCount = 0, rightCount = 0;
+
         public BinaryTree(T nodeValue) //constructor
         {
             this.nodeValue = nodeValue;
@@ -25,17 +27,31 @@ namespace D15BinaryTree
             T currentNodeValue = nodeValue;
             if(currentNodeValue.CompareTo(value) > 0)
             {
-                if (this.leftTree == null)
+                if (this.leftTree == null) 
+                {
                     this.leftTree = new BinaryTree<T>(value);
+                    this.leftCount++;
+                }
                 else
+                {
                     this.leftTree.Insert(value);
+                    this.leftCount++;
+                }
             }
             else
             {
                 if(this.rightTree == null)
+                {
                     this.rightTree = new BinaryTree<T>(value);
+                    this.rightCount++;
+                }
+
                 else
+                {
                     this.rightTree.Insert(value);
+                    this.rightCount++;
+                }
+                   
             }
 
         }    
@@ -45,13 +61,20 @@ namespace D15BinaryTree
         {  
             if(this.leftTree != null)
             {
+                
                 this.leftTree.Display();    
             }
-            Console.WriteLine(this.nodeValue.ToString());
-            if (this.rightTree != null)
+            Console.Write(this.nodeValue.ToString() + " ");
+            if(this.rightTree != null)
             {
                 this.rightTree.Display();   
             }
+        }
+
+        //size
+        public void GetSize()
+        {
+            Console.WriteLine("\nSize : " + (this.leftCount + this.rightCount + 1));
         }
     }
 }
